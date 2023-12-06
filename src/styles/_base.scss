@@ -1,0 +1,35 @@
+@import './variables';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  line-height: 1.6;
+  font-size: 1.5rem;
+  font-family: $font-regular;
+  background-color: $grey-light;
+  color: $dark;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.app {
+  padding: 0 5vw;
+}
