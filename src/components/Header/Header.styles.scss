@@ -1,0 +1,16 @@
+@import '../../styles/shared-styles';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 2.5rem 0;
+  background-color: $white;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1rem;
+
+  &__logo {
+    color: $primary;
+  }
+}

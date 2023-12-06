@@ -1,0 +1,27 @@
+@import '../../styles/shared-styles';
+
+.task-card {
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+
+  &__body {
+    margin: 0.5rem 0 2rem;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__tag {
+    position: absolute;
+    top: 0;
+    right: 2.5rem;
+    background: $primary;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: $white;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+}

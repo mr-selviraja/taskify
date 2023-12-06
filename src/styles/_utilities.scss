@@ -1,1 +1,104 @@
 @import './variables';
+
+.btn {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__group {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__rect {
+    padding: 1rem 2.5rem;
+  }
+
+  &__sqr {
+    padding: 1rem 1.5rem;
+  }
+
+  &__rounded {
+    border-radius: 0.5rem;
+  }
+
+  &__white {
+    background-color: $white;
+  }
+
+  &__success {
+    background-color: $success;
+
+    &:hover {
+      background-color: lighten($success, 5%);
+    }
+  }
+
+  &__warning {
+    background-color: $warning;
+
+    &:hover {
+      background-color: lighten($warning, 5%);
+    }
+  }
+
+  &__danger {
+    background-color: $danger;
+
+    &:hover {
+      background-color: lighten($danger, 5%);
+    }
+  }
+
+  &__outlined-dark {
+    border: 1px solid $dark;
+
+    &:hover {
+      background-color: darken($light, 5%);
+    }
+  }
+}
+
+// Fonts
+.font-regular {
+  font-family: $font-regular;
+}
+
+.font-accent {
+  font-family: $font-accent;
+}
+
+// Theme
+.bg-light {
+  background-color: $light;
+  color: $dark;
+}
+
+.fg-light {
+  background-color: $white;
+  color: $dark;
+}
+
+.bg-dark {
+  background-color: $black;
+  color: $dark;
+}
+
+.fg-dark {
+  background-color: $dark;
+  color: $white;
+}
+
+// Text utilities
+.text-italic {
+  font-style: italic;
+}
+
+.text-bold {
+  font-weight: 700;
+}

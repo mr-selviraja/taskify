@@ -15,7 +15,7 @@ html {
 body {
   box-sizing: border-box;
   line-height: 1.6;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-family: $font-regular;
   background-color: $grey-light;
   color: $dark;
@@ -25,6 +25,10 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
 .container {
   max-width: 70rem;
   margin: 0 auto;
@@ -32,4 +36,21 @@ a {
 
 .app {
   padding: 0 5vw;
+}
+
+.btn-add-task {
+  display: block;
+  margin: 0 auto 2.5rem;
+}
+
+.hr-rule {
+  border-bottom: 1px solid $grey-light;
+}
+
+// mediaqueries
+@media screen and (max-width: 630px) {
+  .task-card__footer {
+    flex-direction: column !important;
+    gap: 1rem;
+  }
 }

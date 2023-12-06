@@ -1,0 +1,7 @@
+@import '../../styles/shared-styles';
+
+.task-list {
+  & > * {
+    margin-bottom: 1.5rem;
+  }
+}
