@@ -29,6 +29,11 @@
 
   &__white {
     background-color: $white;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scaleX(1.1);
+    }
   }
 
   &__success {

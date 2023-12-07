@@ -5,7 +5,24 @@ import '../src/styles/_shared-styles.scss';
 import Navigation from './components/Navigation/Navigation.component';
 import TaskList from './components/TaskList/TaskList.component';
 
+import tasksArr from './data';
+import { useState } from 'react';
+
 function App() {
+  const [tasks, setTasks] = useState(tasksArr);
+
+  // Method to save remarks
+  const saveRemarks = (id, remarks) => {
+    console.log(`save remarks called : ${id} ${remarks}`);
+
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) return { ...task, remarks };
+      return task;
+    });
+
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className='app'>
       <div className='container'>
@@ -17,7 +34,7 @@ function App() {
 
         <Navigation />
 
-        <TaskList />
+        <TaskList tasks={tasks} onSaveRemarks={saveRemarks} />
       </div>
     </div>
   );

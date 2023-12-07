@@ -1,12 +1,15 @@
+import { useReducer } from 'react';
 import TaskCard from '../TaskCard/TaskCard.components';
+import TaskReducer from '../../reducers/TaskReducer';
 import './TaskList.styles.scss';
-import tasksArr from '../../data';
 
-function TaskList() {
+function TaskList({ tasks }) {
+  const [currentTasks, dispatch] = useReducer(TaskReducer, tasks);
+
   return (
     <ul className='task-list'>
-      {tasksArr.map((task, index) => (
-        <TaskCard key={index} task={task} />
+      {currentTasks.map((task) => (
+        <TaskCard key={task.id} id={task.id} task={task} dispatch={dispatch} />
       ))}
     </ul>
   );
