@@ -1,37 +1,30 @@
 import { MdEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
 import { FaCheck } from 'react-icons/fa6';
+import useInput from '../../hooks/useInput';
+import useToggle from '../../hooks/useToggle';
 import './TaskCard.styles.scss';
-import { useState } from 'react';
 
 export default function TaskCard({ task, dispatch, id }) {
   // Props received from TaskList
   const { title, isCompleted, details, remarks, isImportant } = task;
 
-  // State for toggling task editing
-  const [editTask, setEditTask] = useState(false);
-  // Method to toggle task editing
-  const toggleEditTask = () => setEditTask((prevState) => !prevState);
+  // Using a custom hook for a resuable logic to toggle between two states
+  const { editTask, toggleEditTask } = useToggle(
+    false,
+    'editTask',
+    'toggleEditTask'
+  );
+  const { editRemarks, toggleEditRemarks } = useToggle(
+    false,
+    'editRemarks',
+    'toggleEditRemarks'
+  );
 
-  // State for toggling task editing
-  const [editRemarks, setEditRemarks] = useState(false);
-  // Method to toggle task editing
-  const toggleEditRemarks = () => setEditRemarks((prevState) => !prevState);
-
-  // State to hold taskTitle
-  const [taskTitle, setTaskTitle] = useState(title);
-  // Method to handle the task title change
-  const handleTitleChange = (e) => setTaskTitle(e.target.value);
-
-  // State to hold taskDetails
-  const [taskDetails, setTaskDetails] = useState(details);
-  // Method to handle the task details change
-  const handleDetailsChange = (e) => setTaskDetails(e.target.value);
-
-  // State to hold taskDetails
-  const [taskRemarks, setTaskRemarks] = useState(remarks);
-  // Method to handle the task details change
-  const handleRemarksChange = (e) => setTaskRemarks(e.target.value);
+  // Using a custom hook for a reusable logic to extract value and onChange props
+  const titleProps = useInput(title);
+  const detailsProps = useInput(details);
+  const remarksProps = useInput(remarks);
 
   // Method to handle task remarks
   const handleEditRemarks = () => {
@@ -39,7 +32,7 @@ export default function TaskCard({ task, dispatch, id }) {
     if (editRemarks)
       dispatch({
         type: 'ADD_REMARKS',
-        editedRemarks: taskRemarks,
+        editedRemarks: remarksProps.value,
         id,
       });
 
@@ -53,8 +46,8 @@ export default function TaskCard({ task, dispatch, id }) {
     if (editTask)
       dispatch({
         type: 'EDIT_TASK',
-        editedTitle: taskTitle,
-        editedDetails: taskDetails,
+        editedTitle: titleProps.value,
+        editedDetails: detailsProps.value,
         id,
       });
 
@@ -65,25 +58,16 @@ export default function TaskCard({ task, dispatch, id }) {
   return (
     <section className='task-card fg-light'>
       {editTask ? (
-        <input
-          className='font-accent'
-          type='text'
-          value={taskTitle}
-          onChange={handleTitleChange}
-        />
+        <input className='font-accent' type='text' {...titleProps} />
       ) : (
-        <h2 className='task-card__title font-accent'>{taskTitle}</h2>
+        <h2 className='task-card__title font-accent'>{titleProps.value}</h2>
       )}
 
       <div className='task-card__body'>
         {editTask ? (
-          <textarea
-            rows={3}
-            value={taskDetails}
-            onChange={handleDetailsChange}
-          ></textarea>
+          <textarea rows={3} {...detailsProps}></textarea>
         ) : (
-          <p>{taskDetails}</p>
+          <p>{detailsProps.value}</p>
         )}
 
         <hr className='hr-rule' />
@@ -91,13 +75,9 @@ export default function TaskCard({ task, dispatch, id }) {
         <p>
           <span className='text-italic text-bold'>Remarks: </span>
           {editRemarks ? (
-            <textarea
-              rows={3}
-              value={taskRemarks}
-              onChange={handleRemarksChange}
-            ></textarea>
+            <textarea rows={3} {...remarksProps}></textarea>
           ) : (
-            <span>&nbsp;{taskRemarks}</span>
+            <span>&nbsp;{remarksProps.value}</span>
           )}
         </p>
       </div>
