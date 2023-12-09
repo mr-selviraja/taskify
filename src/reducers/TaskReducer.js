@@ -23,8 +23,8 @@ const TaskReducer = (tasks, action) => {
       return editedTasks;
 
     case 'DELETE_TASK':
-      const updatedTasks = tasks.filter((task) => task.id !== action.id);
-      return updatedTasks;
+      const remainingTasks = tasks.filter((task) => task.id !== action.id);
+      return remainingTasks;
 
     case 'ADD_REMARKS':
       const editedRemarks = tasks.map((task) => {
@@ -39,7 +39,12 @@ const TaskReducer = (tasks, action) => {
       return editedRemarks;
 
     case 'ADD_TASK':
-      return tasks; // Return the existing tasks array
+      const newTask = {
+        id: tasks.length + 1,
+        ...action.task,
+      };
+      const updatedTasks = [newTask, ...tasks];
+      return updatedTasks;
 
     default:
       return tasks; // Return the existing tasks array for the default case

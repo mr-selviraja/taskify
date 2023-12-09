@@ -1,27 +1,21 @@
-import { MdEdit } from 'react-icons/md';
-import { MdDelete } from 'react-icons/md';
-import { FaCheck } from 'react-icons/fa6';
+import React from 'react';
 import useInput from '../../hooks/useInput';
 import useToggle from '../../hooks/useToggle';
+import { MdEdit, MdDelete } from 'react-icons/md';
+import { FaCheck } from 'react-icons/fa6';
 import './TaskCard.styles.scss';
 
 export default function TaskCard({ task, dispatch, id }) {
   // Props received from TaskList
   const { title, isCompleted, details, remarks, isImportant } = task;
 
-  // Using a custom hook for a resuable logic to toggle between two states
-  const { editTask, toggleEditTask } = useToggle(
-    false,
-    'editTask',
-    'toggleEditTask'
-  );
-  const { editRemarks, toggleEditRemarks } = useToggle(
-    false,
-    'editRemarks',
-    'toggleEditRemarks'
-  );
+  // Using a custom hook for a reusable logic to toggle between two states
+  // HERE WE'RE USING DESTRUCTURING ASSIGNMENT TO RENAME THE PROPERTIES RETURNED BY THE HOOK
+  const { status: editTask, toggleStatus: toggleEditTask } = useToggle(false);
+  const { status: editRemarks, toggleStatus: toggleEditRemarks } =
+    useToggle(false);
 
-  // Using a custom hook for a reusable logic to extract value and onChange props
+  // Using a custom hook for reusable logic to extract value and onChange props
   const titleProps = useInput(title);
   const detailsProps = useInput(details);
   const remarksProps = useInput(remarks);

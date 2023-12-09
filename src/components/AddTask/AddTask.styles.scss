@@ -1,0 +1,52 @@
+@import '../../styles/shared-styles';
+
+.modal-container {
+  background-color: rgba($dark, 0.7);
+  z-index: 999;
+  width: 100vw;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+}
+
+.modal {
+  background-color: white;
+  padding: 2.5rem 5rem 3.5rem;
+  border-radius: 0.5rem;
+  width: 50rem;
+
+  transition: all 0.3s ease-in-out;
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    & label {
+      display: flex;
+      gap: 1rem;
+    }
+
+    & input[type='checkbox'] {
+      width: 1.5rem;
+    }
+  }
+
+  &__footer {
+    display: flex;
+
+    & button {
+      flex-grow: 1;
+    }
+  }
+}

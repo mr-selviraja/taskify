@@ -1,22 +1,11 @@
 import { useState } from 'react';
 
-const useToggle = (
-  initialValue,
-  statusName = 'status',
-  setStatusName = 'setStatus',
-  toggleStatusName = 'toggleStatus'
-) => {
+const useToggle = (initialValue) => {
   const [status, setStatus] = useState(initialValue);
 
   const toggleStatus = () => setStatus((prevState) => !prevState);
 
-  const result = {
-    [statusName]: status,
-    [setStatusName]: setStatus,
-    [toggleStatusName]: toggleStatus,
-  };
-
-  return result;
+  return { status, setStatus, toggleStatus };
 };
 
 export default useToggle;

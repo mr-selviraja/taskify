@@ -6,6 +6,11 @@
   font-family: inherit;
   text-transform: uppercase;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
   &:hover {
     cursor: pointer;
   }
@@ -60,6 +65,15 @@
     }
   }
 
+  &__dark {
+    background-color: $dark;
+    color: $white;
+
+    &:hover {
+      background-color: lighten($dark, 5%);
+    }
+  }
+
   &__outlined-dark {
     border: 1px solid $dark;
 
@@ -106,4 +120,16 @@
 
 .text-bold {
   font-weight: 700;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }
