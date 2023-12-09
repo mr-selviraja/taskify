@@ -4,7 +4,7 @@ import useInput from '../../hooks/useInput';
 import useCheckbox from '../../hooks/useCheckbox';
 import './AddTask.styles.scss';
 
-function Modal({ onToggleModal, dispatch }) {
+function Modal({ theme, onToggleModal, dispatch }) {
   const titleProps = useInput('');
   const detailsProps = useInput('');
   const remarksProps = useInput('');
@@ -12,6 +12,14 @@ function Modal({ onToggleModal, dispatch }) {
 
   // Method to handle adding task
   const handleAddTask = (e) => {
+    // Don't proceed if any of the form values are empty
+    if (
+      titleProps.value === '' ||
+      detailsProps.value === '' ||
+      remarksProps.value === ''
+    )
+      return;
+
     const task = {
       title: titleProps.value,
       isCompleted: false,
@@ -32,7 +40,7 @@ function Modal({ onToggleModal, dispatch }) {
 
   return (
     <section className='modal-container'>
-      <div className='modal'>
+      <div className={`modal fg-${theme}`}>
         <h2 className='modal__title font-accent text-center text-primary text-uppercase'>
           Add New Task
         </h2>
@@ -72,14 +80,20 @@ function Modal({ onToggleModal, dispatch }) {
           }}
           className='modal__footer btn__group'
         >
-          <button className='btn btn__rect btn__rounded btn__dark'>
+          <button
+            className={`btn btn__rect btn__rounded btn__${
+              theme === 'light' ? 'dark' : 'light'
+            }`}
+          >
             <FaPlus />
             <span>ADD TASK</span>
           </button>
 
           <button
             onClick={(e) => onToggleModal(e)}
-            className='btn btn__rect btn__rounded btn__outlined-dark'
+            className={`btn btn__rect btn__rounded btn__outlined-${
+              theme === 'light' ? 'dark' : 'light'
+            }`}
           >
             <RxCross2 />
             <span>DISCARD TASK</span>

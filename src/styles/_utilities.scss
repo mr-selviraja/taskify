@@ -74,11 +74,29 @@
     }
   }
 
+  &__light {
+    background-color: $light;
+    color: $dark;
+
+    &:hover {
+      background-color: darken($light, 5%);
+    }
+  }
+
   &__outlined-dark {
     border: 1px solid $dark;
 
     &:hover {
       background-color: darken($light, 5%);
+    }
+  }
+
+  &__outlined-light {
+    border: 1px solid $light;
+    color: $white !important;
+
+    &:hover {
+      background-color: lighten($dark, 5%);
     }
   }
 }
@@ -105,7 +123,7 @@
 
 .bg-dark {
   background-color: $black;
-  color: $dark;
+  color: $white;
 }
 
 .fg-dark {
@@ -132,4 +150,12 @@
 
 .text-uppercase {
   text-transform: uppercase;
+}
+
+.text-light {
+  color: $white;
+}
+
+.text-dark {
+  color: $black;
 }

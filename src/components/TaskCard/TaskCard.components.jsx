@@ -5,7 +5,7 @@ import { MdEdit, MdDelete } from 'react-icons/md';
 import { FaCheck } from 'react-icons/fa6';
 import './TaskCard.styles.scss';
 
-export default function TaskCard({ task, dispatch, id }) {
+export default function TaskCard({ theme, task, dispatch, id }) {
   // Props received from TaskList
   const { title, isCompleted, details, remarks, isImportant } = task;
 
@@ -50,7 +50,7 @@ export default function TaskCard({ task, dispatch, id }) {
   };
 
   return (
-    <section className='task-card fg-light'>
+    <section className={`task-card fg-${theme}`}>
       {editTask ? (
         <input className='font-accent' type='text' {...titleProps} />
       ) : (
@@ -80,14 +80,18 @@ export default function TaskCard({ task, dispatch, id }) {
         <div className='btn__group'>
           <button
             onClick={() => dispatch({ type: 'TOGGLE_DONE', id })}
-            className='btn btn__rect btn__rounded btn__success'
+            className={`btn btn__rect btn__rounded btn__success text-${
+              theme === 'light' ? 'dark' : 'light'
+            }`}
           >
             Mark As {isCompleted ? 'Undone' : 'Done'}
           </button>
 
           <button
             onClick={handleEditTask}
-            className='btn btn__sqr btn__rounded btn__warning'
+            className={`btn btn__sqr btn__rounded btn__warning text-${
+              theme === 'light' ? 'dark' : 'light'
+            }`}
           >
             {editTask ? <FaCheck /> : <MdEdit />}
           </button>
@@ -99,7 +103,11 @@ export default function TaskCard({ task, dispatch, id }) {
                 id,
               })
             }
-            className='btn btn__sqr btn__rounded btn__danger'
+            className={`
+            btn btn__sqr btn__rounded btn__danger text-${
+              theme === 'light' ? 'dark' : 'light'
+            }
+            `}
           >
             <MdDelete />
           </button>
@@ -107,7 +115,9 @@ export default function TaskCard({ task, dispatch, id }) {
 
         <button
           onClick={handleEditRemarks}
-          className='btn btn__rect btn__rounded btn__outlined-dark'
+          className={`btn btn__rect btn__rounded btn__outlined-${
+            theme == 'light' ? 'dark' : 'light'
+          }`}
         >
           {editRemarks ? 'Save Remarks' : 'Add Remarks'}
         </button>

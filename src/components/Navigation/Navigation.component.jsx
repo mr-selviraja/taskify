@@ -3,24 +3,24 @@ import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import './Navigation.styles.scss';
 
-function Navigation() {
+function Navigation({ theme }) {
   return (
     <nav className='navigation'>
       <ul>
         <li>
-          <a href='#'>
+          <a href='#' className={`fg-${theme}`}>
             <IoListCircleSharp />
           </a>
         </li>
 
         <li>
-          <a href='#'>
+          <a href='#' className={`fg-${theme}`}>
             <IoIosCheckmarkCircle />
           </a>
         </li>
 
         <li>
-          <a href='#'>
+          <a href='#' className={`fg-${theme}`}>
             <RiErrorWarningFill />
           </a>
         </li>
