@@ -3,40 +3,27 @@ import { RxCross2 } from 'react-icons/rx';
 import useInput from '../../hooks/useInput';
 import useCheckbox from '../../hooks/useCheckbox';
 import './AddTask.styles.scss';
+import { useTaskContext } from '../../contexts/TaskContext';
 
-function Modal({ theme, onToggleModal, dispatch }) {
+function Modal({ theme, onToggleModal }) {
   const titleProps = useInput('');
   const detailsProps = useInput('');
   const remarksProps = useInput('');
   const taskImportance = useCheckbox(false);
+  const { addTask } = useTaskContext();
 
-  // Method to handle adding task
-  const handleAddTask = (e) => {
-    // Don't proceed if any of the form values are empty
-    if (
-      titleProps.value === '' ||
-      detailsProps.value === '' ||
-      remarksProps.value === ''
-    )
-      return;
-
-    const task = {
-      title: titleProps.value,
-      isCompleted: false,
-      details: detailsProps.value,
-      remarks: remarksProps.value,
-      isImportant: taskImportance.checked,
-    };
-
-    console.log(`Task: ${task}`);
-
-    dispatch({
-      type: 'ADD_TASK',
-      task,
-    });
-
+  function formSubmitted(e) {
+    e.preventDefault(); // Prevent the default form submission behavior
+    console.log('Form Submitted!');
+    // Additional form handling logic, e.g., calling addTask
+    addTask(
+      titleProps.value,
+      detailsProps.value,
+      remarksProps.value,
+      taskImportance.checked
+    );
     onToggleModal(e);
-  };
+  }
 
   return (
     <section className='modal-container'>
@@ -45,7 +32,7 @@ function Modal({ theme, onToggleModal, dispatch }) {
           Add New Task
         </h2>
 
-        <div className='modal__body'>
+        <form onSubmit={formSubmitted} className='modal__body'>
           <input
             className='font-accent'
             name='taskTitle'
@@ -72,33 +59,28 @@ function Modal({ theme, onToggleModal, dispatch }) {
             <input type='checkbox' name='taskImportance' {...taskImportance} />
             <span>Is the Task Important?</span>
           </label>
-        </div>
 
-        <div
-          onClick={(e) => {
-            handleAddTask(e);
-          }}
-          className='modal__footer btn__group'
-        >
-          <button
-            className={`btn btn__rect btn__rounded btn__${
-              theme === 'light' ? 'dark' : 'light'
-            }`}
-          >
-            <FaPlus />
-            <span>ADD TASK</span>
-          </button>
-
-          <button
-            onClick={(e) => onToggleModal(e)}
-            className={`btn btn__rect btn__rounded btn__outlined-${
-              theme === 'light' ? 'dark' : 'light'
-            }`}
-          >
-            <RxCross2 />
-            <span>DISCARD TASK</span>
-          </button>
-        </div>
+          <div className='modal__footer btn__group'>
+            <button
+              type='submit'
+              className={`btn btn__rect btn__rounded btn__${
+                theme === 'light' ? 'dark' : 'light'
+              }`}
+            >
+              <FaPlus />
+              <span>ADD TASK</span>
+            </button>
+            <button
+              onClick={(e) => onToggleModal(e)}
+              className={`btn btn__rect btn__rounded btn__outlined-${
+                theme === 'light' ? 'dark' : 'light'
+              }`}
+            >
+              <RxCross2 />
+              <span>DISCARD TASK</span>
+            </button>
+          </div>
+        </form>
       </div>
     </section>
   );

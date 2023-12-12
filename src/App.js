@@ -2,18 +2,17 @@ import Header from './components/Header/Header.component';
 import Navigation from './components/Navigation/Navigation.component';
 import TaskList from './components/TaskList/TaskList.component';
 import AddTask from './components/AddTask/AddTask.component';
-import tasks from './data';
-import TaskReducer from './reducers/TaskReducer';
 import '../src/styles/_shared-styles.scss';
-import { useState, useReducer } from 'react';
+import { useState } from 'react';
 import { useThemeContext } from './contexts/ThemeContext';
+import { useTaskContext } from './contexts/TaskContext';
 
 function App() {
   // States to manage the modal active status
   const [isModalActive, setIsModalActive] = useState(false);
 
-  // State and Dispatcher to reduce the tasks state updates using useReducer
-  const [currentTasks, dispatch] = useReducer(TaskReducer, tasks);
+  // Destructured tasks from TaskContext
+  const { tasks } = useTaskContext();
 
   // Global states and handlers to manage the theming of app using contextAPI
   const { theme, toggleTheme } = useThemeContext();
@@ -23,8 +22,6 @@ function App() {
     e.stopPropagation();
     setIsModalActive((prevState) => !prevState);
   };
-
-  console.log('THEME IN APP: ', theme);
 
   return (
     <>
@@ -41,16 +38,12 @@ function App() {
 
           <Navigation theme={theme} />
 
-          <TaskList theme={theme} tasks={currentTasks} dispatch={dispatch} />
+          <TaskList theme={theme} tasks={tasks} />
         </div>
       </div>
 
       {isModalActive && (
-        <AddTask
-          theme={theme}
-          onToggleModal={toggleModalActive}
-          dispatch={dispatch}
-        />
+        <AddTask theme={theme} onToggleModal={toggleModalActive} />
       )}
     </>
   );
