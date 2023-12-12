@@ -14,14 +14,22 @@ function Modal({ theme, onToggleModal }) {
 
   function formSubmitted(e) {
     e.preventDefault(); // Prevent the default form submission behavior
-    console.log('Form Submitted!');
-    // Additional form handling logic, e.g., calling addTask
+
+    // Don't proceed if any of the form values are empty
+    if (
+      titleProps.value === '' ||
+      detailsProps.value === '' ||
+      remarksProps.value === ''
+    )
+      return;
+
     addTask(
       titleProps.value,
       detailsProps.value,
       remarksProps.value,
       taskImportance.checked
     );
+
     onToggleModal(e);
   }
 
@@ -70,6 +78,7 @@ function Modal({ theme, onToggleModal }) {
               <FaPlus />
               <span>ADD TASK</span>
             </button>
+
             <button
               onClick={(e) => onToggleModal(e)}
               className={`btn btn__rect btn__rounded btn__outlined-${

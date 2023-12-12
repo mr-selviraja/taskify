@@ -67,9 +67,6 @@ export const TaskContextProvider = ({ children }) => {
 
   // Function to add a task
   const addTask = (title, details, remarks, isImportant) => {
-    // Don't proceed if any of the form values are empty
-    if (title === '' || details === '' || remarks === '') return;
-
     // Construct a task object
     const task = {
       title,
@@ -108,6 +105,16 @@ export const TaskContextProvider = ({ children }) => {
     });
   };
 
+  // Function to get done tasks
+  const getDoneTasks = () => {
+    return tasks.filter((task) => task.isCompleted);
+  };
+
+  // Function to get important tasks
+  const getImportantTasks = () => {
+    return tasks.filter((task) => task.isImportant);
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -117,6 +124,8 @@ export const TaskContextProvider = ({ children }) => {
         deleteTask,
         editRemarks,
         toggleTaskStatus,
+        getDoneTasks,
+        getImportantTasks,
       }}
     >
       {children}

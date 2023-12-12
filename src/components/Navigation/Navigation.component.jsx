@@ -1,6 +1,7 @@
 import { IoListCircleSharp } from 'react-icons/io5';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { RiErrorWarningFill } from 'react-icons/ri';
+import { NavLink } from 'react-router-dom';
 import './Navigation.styles.scss';
 
 function Navigation({ theme }) {
@@ -8,21 +9,21 @@ function Navigation({ theme }) {
     <nav className='navigation'>
       <ul>
         <li>
-          <a href='#' className={`fg-${theme}`}>
+          <NavLink to='/' className={`fg-${theme}`}>
             <IoListCircleSharp />
-          </a>
+          </NavLink>
         </li>
 
         <li>
-          <a href='#' className={`fg-${theme}`}>
+          <NavLink to='/done' className={`fg-${theme}`}>
             <IoIosCheckmarkCircle />
-          </a>
+          </NavLink>
         </li>
 
         <li>
-          <a href='#' className={`fg-${theme}`}>
+          <NavLink to='/important' className={`fg-${theme}`}>
             <RiErrorWarningFill />
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
