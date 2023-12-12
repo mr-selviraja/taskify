@@ -99,7 +99,7 @@ export default function TaskCard({ theme, task, id }) {
         </div>
 
         <button
-          onClick={handleEditRemarks}
+          onClick={() => handleEditRemarks(id)}
           className={`btn btn__rect btn__rounded btn__outlined-${useReverseTheme()}`}
         >
           {editRemarksActive ? 'Save Remarks' : 'Add Remarks'}

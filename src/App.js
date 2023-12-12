@@ -4,12 +4,12 @@ import AddTask from './components/AddTask/AddTask.component';
 import '../src/styles/_shared-styles.scss';
 import { useState } from 'react';
 import { useThemeContext } from './contexts/ThemeContext';
-import { useTaskContext } from './contexts/TaskContext';
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Page404 from './pages/Page404';
 import AllTasks from './pages/AllTasks';
 import ImportantTasks from './pages/ImportantTasks';
 import DoneTasks from './pages/DoneTasks';
+import { useTaskContext } from './contexts/TaskContext';
 
 function App() {
   // States to manage the modal active status

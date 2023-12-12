@@ -1,50 +1,39 @@
+// reducers/TaskReducer.js
 const TaskReducer = (tasks, action) => {
   switch (action.type) {
+    case 'SET_TASKS':
+      return action.tasks;
+
     case 'TOGGLE_DONE':
-      const toggledTasks = tasks.map((task) => {
-        if (task.id === action.id) {
-          return { ...task, isCompleted: !task.isCompleted };
-        }
-        return task;
-      });
-      return toggledTasks;
+      return tasks.map((task) =>
+        task.id === action.id
+          ? { ...task, isCompleted: !task.isCompleted }
+          : task
+      );
 
     case 'EDIT_TASK':
-      const editedTasks = tasks.map((task) => {
-        if (task.id === action.id) {
-          return {
-            ...task,
-            title: action.editedTitle,
-            details: action.editedDetails,
-          };
-        }
-        return task;
-      });
-      return editedTasks;
+      return tasks.map((task) =>
+        task.id === action.id
+          ? {
+              ...task,
+              title: action.editedTitle,
+              details: action.editedDetails,
+            }
+          : task
+      );
 
     case 'DELETE_TASK':
-      const remainingTasks = tasks.filter((task) => task.id !== action.id);
-      return remainingTasks;
+      return tasks.filter((task) => task.id !== action.id);
 
     case 'ADD_REMARKS':
-      const editedRemarks = tasks.map((task) => {
-        if (task.id === action.id) {
-          return {
-            ...task,
-            remarks: action.editedRemarks,
-          };
-        }
-        return task;
-      });
-      return editedRemarks;
+      return tasks.map((task) =>
+        task.id === action.id
+          ? { ...task, remarks: action.editedRemarks }
+          : task
+      );
 
     case 'ADD_TASK':
-      const newTask = {
-        id: tasks.length + 1,
-        ...action.task,
-      };
-      const updatedTasks = [newTask, ...tasks];
-      return updatedTasks;
+      return [...tasks, action.task]; // Update the local state
 
     default:
       return tasks; // Return the existing tasks array for the default case

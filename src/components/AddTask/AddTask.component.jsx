@@ -12,7 +12,7 @@ function Modal({ theme, onToggleModal }) {
   const taskImportance = useCheckbox(false);
   const { addTask } = useTaskContext();
 
-  function formSubmitted(e) {
+  function handleAddTask(e) {
     e.preventDefault(); // Prevent the default form submission behavior
 
     // Don't proceed if any of the form values are empty
@@ -40,7 +40,7 @@ function Modal({ theme, onToggleModal }) {
           Add New Task
         </h2>
 
-        <form onSubmit={formSubmitted} className='modal__body'>
+        <form onSubmit={handleAddTask} className='modal__body'>
           <input
             className='font-accent'
             name='taskTitle'

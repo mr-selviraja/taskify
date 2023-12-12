@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 
 // Provide Context (OR) Context Provider
 export const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   // Method to dispatch action to toggle the theme
   const toggleTheme = () =>
