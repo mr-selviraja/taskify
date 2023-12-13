@@ -4,6 +4,7 @@ import useInput from '../../hooks/useInput';
 import useCheckbox from '../../hooks/useCheckbox';
 import './AddTask.styles.scss';
 import { useTaskContext } from '../../contexts/TaskContext';
+import useReverseTheme from '../../hooks/useReverseTheme';
 
 function Modal({ theme, onToggleModal }) {
   const titleProps = useInput('');
@@ -71,9 +72,7 @@ function Modal({ theme, onToggleModal }) {
           <div className='modal__footer btn__group'>
             <button
               type='submit'
-              className={`btn btn__rect btn__rounded btn__${
-                theme === 'light' ? 'dark' : 'light'
-              }`}
+              className={`btn btn__rect btn__rounded btn__${useReverseTheme()}`}
             >
               <FaPlus />
               <span>ADD TASK</span>
@@ -81,9 +80,7 @@ function Modal({ theme, onToggleModal }) {
 
             <button
               onClick={(e) => onToggleModal(e)}
-              className={`btn btn__rect btn__rounded btn__outlined-${
-                theme === 'light' ? 'dark' : 'light'
-              }`}
+              className={`btn btn__rect btn__rounded btn__outlined-${useReverseTheme()}`}
             >
               <RxCross2 />
               <span>DISCARD TASK</span>

@@ -59,6 +59,31 @@ input {
   font-size: 2.25rem;
 }
 
+.page-404 {
+  height: 100vh;
+  padding: 10vw;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+
+    & img {
+      width: 50%;
+      max-width: 50rem;
+    }
+
+    & h2 {
+      font-size: 3rem;
+    }
+
+    & button {
+      align-self: center;
+    }
+  }
+}
+
 // mediaqueries
 @media screen and (max-width: 630px) {
   .task-card__footer {
