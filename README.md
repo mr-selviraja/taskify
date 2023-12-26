@@ -24,9 +24,9 @@
 
 [Live Demo] - https://color-board-psi.vercel.app
 
-![Color Board Mobile and Tablet Preview](/public/taskify__mobile.png)
+![Color Board Mobile and Tablet Preview](/public/assets/taskify__mobile.png)
 
-![Color Board Desktop Preview](/public/taskify.png)
+![Color Board Desktop Preview](/public/assets/taskify.png)
 
 ## Built With
 
