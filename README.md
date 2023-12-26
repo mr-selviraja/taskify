@@ -22,7 +22,7 @@
 
 ## Deployment
 
-[Live Demo] - https://color-board-psi.vercel.app
+[Live Demo] - https://taskify-blue.vercel.app
 
 ![Color Board Mobile and Tablet Preview](/public/assets/images/taskify__mobile.png)
 
