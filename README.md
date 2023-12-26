@@ -3,7 +3,7 @@
 
 ## Description
 
-- Taskify is a learning implementation of UI development with ReactJS using Hooks.
+- Taskify is a learning implementation of UI development with ReactJS using React hooks.
 - Along with hooks, creating custom hooks, exploring Serverless Backend i.e., firebase and React ContextAPI.
 - Further configured the app to manage state using Redux for ReactJS.
 - Finally again configured the same app to manage state using Redux toolkit that makes working with Redux much intuitive.
@@ -24,9 +24,9 @@
 
 [Live Demo] - https://color-board-psi.vercel.app
 
-![Color Board Mobile and Tablet Preview](/public/assets/taskify__mobile.png)
+![Color Board Mobile and Tablet Preview](/public/assets/images/taskify__mobile.png)
 
-![Color Board Desktop Preview](/public/assets/taskify.png)
+![Color Board Desktop Preview](/public/assets/images/taskify.png)
 
 ## Built With
 
