@@ -34,6 +34,8 @@
 - Firebase (Firestore for data storage)
 - CSS (for styling)
 - React ContextAPI
+- React Redux
+- Redux toolkit
 
 
 ## Features
@@ -55,17 +57,18 @@
 
 ### Installation
 
+1. Clone the repository:
    ```bash
    git clone https://github.com/mr-selviraja/taskify.git
    cd taskify
    npm install
-   npm start```
+   npm start
+   ```
 
 
 ## authors
 
 [Selviraja Pasagadugula](https://github.com/mr-selviraja)
-
 
 ## License
 
