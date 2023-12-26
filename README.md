@@ -32,7 +32,7 @@
 
 - React
 - Firebase (Firestore for data storage)
-- CSS (for styling)
+- SASS(Styling using styled components, css modules, inline styles, etc.)
 - React ContextAPI
 - React Redux
 - Redux toolkit
@@ -49,21 +49,20 @@
 - Toggle between dark and light themes
 
 
-### Prerequisites
+## Prerequisites
 
 - Node.js installed on your machine
 - Firebase account (for setting up Firebase)
 
 
-### Installation
+## Installation
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/mr-selviraja/taskify.git
    cd taskify
    npm install
-   npm start
-   ```
+   npm start```
 
 
 ## authors
